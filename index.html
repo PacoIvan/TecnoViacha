@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TecnoViacha - Venta y Propaganda de Productos</title>
+    <style>
+        :root {
+            --color-primario: #0d6efd;
+            --color-secundario: #1e1e1e;
+            --color-acento: #ffb400;
+            --color-fondo: #f2f5f7;
+            --color-tarjeta: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: var(--color-fondo);
+            color: #333;
+        }
+
+        /* ENCABEZADO / HERO */
+        header {
+            background: radial-gradient(circle at top left, #0d6efd, #004aad);
+            color: white;
+            padding: 80px 20px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::after {
+            content: "";
+            position: absolute;
+            width: 260px;
+            height: 260px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            top: -60px;
+            right: -40px;
+        }
+
+        .logo-mini {
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            opacity: 0.85;
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            margin: 0;
+            font-weight: 800;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            margin-top: 12px;
+            margin-bottom: 25px;
+        }
+
+        .hero-badges {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .hero-badge {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 999px;
+            padding: 6px 14px;
+            font-size: 0.85rem;
+        }
+
+        .hero-botones {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .btn-primario,
+        .btn-secundario {
+            border-radius: 999px;
+            padding: 12px 26px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            display: inline-block;
+            transition: transform 0.15s, box-shadow 0.15s, background 0.15s, color 0.15s;
+        }
+
+        .btn-primario {
+            background: #fff;
+            color: #004aad;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+        }
+
+        .btn-primario:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35);
+        }
+
+        .btn-secundario {
+            border: 2px solid #fff;
+            color: #fff;
+            background: transparent;
+        }
+
+        .btn-secundario:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* NAV */
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            background: var(--color-secundario);
+            padding: 12px 10px;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            position: relative;
+            padding-bottom: 3px;
+        }
+
+        nav a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-primario);
+            transition: width 0.2s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* CONTENEDOR GENERAL */
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 40px 20px;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 12px;
+            color: var(--color-secundario);
+        }
+
+        .subtitulo {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 0.98rem;
+            color: #666;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: var(--color-tarjeta);
+            border-radius: 14px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+            padding: 18px 18px 20px;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            width: 140%;
+            height: 60px;
+            background: linear-gradient(90deg, rgba(13, 110, 253, 0.13), transparent);
+            top: -60px;
+            left: -20%;
+            transform: rotate(-3deg);
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 18px rgba(0, 0, 0, 0.2);
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 12px;
+        }
+
+        .card h3 {
+            margin-top: 5px;
+            margin-bottom: 8px;
+        }
+
+        .badge-oferta {
+            position: absolute;
+            top: 10px;
+            right: 12px;
+            background: var(--color-acento);
+            color: #000;
+            font-weight: 700;
+            font-size: 0.78rem;
+            padding: 4px 10px;
+            border-radius: 999px;
+        }
+
+        /* CARRUSEL */
+        .carousel-section {
+            background: #0b1736;
+            color: #fff;
+            padding: 40px 0 45px;
+        }
+
+        .carousel-wrapper {
+            max-width: 1100px;
+            margin: auto;
+            padding: 0 20px;
+        }
+
+        .carousel-title {
+            text-align: center;
+            font-size: 1.6rem;
+            margin-bottom: 8px;
+        }
+
+        .carousel-sub {
+            text-align: center;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            color: #d7defa;
+        }
+
+        .carousel {
+            position: relative;
+            overflow: hidden;
+            border-radius: 18px;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.6);
+        }
+
+        .carousel-slide {
+            display: none;
+            position: relative;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            display: block;
+            max-height: 420px;
+            object-fit: cover;
+        }
+
+        .carousel-slide.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .carousel-caption {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            padding: 16px 22px 20px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            color: #fff;
+        }
+
+        .carousel-caption h3 {
+            margin: 0 0 4px;
+        }
+
+        .carousel-caption p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.55);
+            border: none;
+            color: #fff;
+            font-size: 1.4rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.15s, transform 0.15s;
+        }
+
+        .carousel-btn:hover {
+            background: rgba(0, 0, 0, 0.85);
+            transform: translateY(-50%) scale(1.05);
+        }
+
+        .carousel-btn.prev {
+            left: 12px;
+        }
+
+        .carousel-btn.next {
+            right: 12px;
+        }
+
+        .carousel-dots {
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .carousel-dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            border: 1px solid #fff;
+            background: transparent;
+            cursor: pointer;
+            transition: background 0.15s, transform 0.15s;
+        }
+
+        .carousel-dot.active {
+            background: #fff;
+            transform: scale(1.15);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(1.01);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* SECCIÓN PROPAGANDA / PROMOS */
+        .promo-strip {
+            background: #fff;
+            border-radius: 16px;
+            padding: 16px 18px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .promo-strip span {
+            font-weight: 600;
+        }
+
+        .pill {
+            padding: 6px 14px;
+            border-radius: 999px;
+            background: #e6f0ff;
+            font-size: 0.9rem;
+        }
+
+        /* CONTACTO */
+        .botones-contacto {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .botones-contacto a {
+            display: inline-block;
+            margin: 10px 15px;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.05rem;
+        }
+
+        .whatsapp {
+            background: #25D366;
+            color: white;
+        }
+
+        .tiktok {
+            background: #000;
+            color: white;
+        }
+
+        .direccion {
+            text-align: center;
+            font-size: 0.95rem;
+            color: #555;
+            margin-top: 15px;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--color-secundario);
+            color: white;
+            text-align: center;
+            padding: 18px 10px;
+            margin-top: 40px;
+            font-size: 0.95rem;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 700px) {
+            header {
+                padding: 60px 16px 40px;
+            }
+            header h1 {
+                font-size: 2.1rem;
+            }
+            nav {
+                flex-wrap: wrap;
+            }
+            .carousel-caption {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Estilo impresión */
+        @media print {
+            nav,
+            footer,
+            .botones-contacto,
+            .hero-botones,
+            .carousel-section,
+            .promo-strip {
+                display: none !important;
+            }
+            header {
+                background: #000 !important;
+                color: white;
+            }
+            .card {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HERO PRINCIPAL -->
+    <header id="inicio">
+        <div class="logo-mini">TECNO VIACHA · SISTEMAS INFORMÁTICOS</div>
+        <h1>Página Web para Venta y Propaganda</h1>
+        <p>Promocionamos accesorios de PC, servicios técnicos y ofertas tecnológicas en la localidad de Viacha.</p>
+
+        <div class="hero-badges">
+            <div class="hero-badge">✓ Catálogo de productos</div>
+            <div class="hero-badge">✓ Servicios técnicos especializados</div>
+            <div class="hero-badge">✓ Contacto directo por WhatsApp</div>
+        </div>
+
+        <div class="hero-botones">
+            <a href="#productos" class="btn-primario">Ver productos</a>
+            <a href="#contacto" class="btn-secundario">Pedir información</a>
+        </div>
+    </header>
+
+    <!-- NAV -->
+    <nav>
+        <a href="#inicio">Inicio</a>
+        <a href="#carousel">Publicidad</a>
+        <a href="#productos">Productos</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#contacto">Contacto</a>
+    </nav>
+
+    <!-- CARRUSEL / PROPAGANDA -->
+    <section class="carousel-section" id="carousel">
+        <div class="carousel-wrapper">
+            <h2 class="carousel-title">Promociones destacadas</h2>
+            <p class="carousel-sub">
+                Anunciamos nuestros productos estrella y servicios más solicitados para los clientes de Viacha.
+            </p>
+
+            <div class="carousel">
+                <div class="carousel-slide active">
+                    <!-- Imagen 1: setup gamer morado/azul -->
+                    <img src="https://images.unsplash.com/photo-1593642532973-d31b6557fa68?w=1400" alt="PC Gamer en promoción" />
+                    <div class="carousel-caption">
+                        <h3>Actualización a Disco Sólido SSD</h3>
+                        <p>Haz tu computadora mucho más rápida. Instalación y copia de datos incluidos.</p>
+                    </div>
+                </div>
+
+                <div class="carousel-slide">
+                    <!-- Imagen 2: teclado y luces RGB -->
+                    <img src="https://images.unsplash.com/photo-1512428559087-560fa5ceab42?w=1400" alt="Accesorios de PC RGB" />
+                    <div class="carousel-caption">
+                        <h3>Accesorios tecnológicos con estilo</h3>
+                        <p>Teclados, mouse y combos gamer con iluminación RGB para tu escritorio.</p>
+                    </div>
+                </div>
+
+                <div class="carousel-slide">
+                    <!-- Imagen 3: técnico reparando PC -->
+                    <img src="https://images.unsplash.com/photo-1587202372634-32705e3bf49c?w=1400" alt="Servicio técnico" />
+                    <div class="carousel-caption">
+                        <h3>Servicio técnico en Viacha</h3>
+                        <p>Mantenimiento preventivo y correctivo sin tener que ir a la ciudad de La Paz.</p>
+                    </div>
+                </div>
+
+                <!-- Botones -->
+                <button class="carousel-btn prev" aria-label="Anterior">&#10094;</button>
+                <button class="carousel-btn next" aria-label="Siguiente">&#10095;</button>
+
+                <!-- Puntos -->
+                <div class="carousel-dots">
+                    <div class="carousel-dot active" data-index="0"></div>
+                    <div class="carousel-dot" data-index="1"></div>
+                    <div class="carousel-dot" data-index="2"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOQUE DE PROPAGANDA SIMPLE -->
+    <section class="container">
+        <div class="promo-strip">
+            <span>🎯 Propaganda digital para Viacha:</span>
+            <span class="pill">Publicidad de productos en la web</span>
+            <span class="pill">Anuncios de ofertas y combos</span>
+            <span class="pill">Contacto directo con clientes</span>
+        </div>
+    </section>
+
+    <!-- PRODUCTOS -->
+    <section class="container" id="productos">
+        <h2>Catálogo de Productos</h2>
+        <p class="subtitulo">
+            Venta de accesorios y componentes para mejorar el rendimiento de tu PC o laptop.
+        </p>
+        <div class="grid">
+            <div class="card">
+                <div class="badge-oferta">OFERTA</div>
+                <!-- Imagen SSD muy llamativa -->
+                <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800" alt="Disco Sólido SSD" />
+                <h3>Discos Sólidos SSD</h3>
+                <p>120GB / 240GB / 480GB / 1TB</p>
+                <p><strong>Ideal para acelerar tu equipo.</strong></p>
+            </div>
+            <div class="card">
+                <div class="badge-oferta">NUEVO</div>
+                <!-- Imagen RAM con luces -->
+                <img src="https://images.unsplash.com/photo-1593642532400-2682810df593?w=800" alt="Memorias RAM" />
+                <h3>Memorias RAM</h3>
+                <p>DDR3 / DDR4 / DDR5</p>
+                <p><strong>Mejora el rendimiento en juegos y programas.</strong></p>
+            </div>
+            <div class="card">
+                <!-- Imagen escritorio setup gamer -->
+                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800" alt="Accesorios" />
+                <h3>Accesorios Varios</h3>
+                <p>Teclados, mouse, parlantes, cables HDMI, hubs USB.</p>
+                <p><strong>Todo para tu escritorio tecnológico.</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section class="container" id="servicios">
+        <h2>Servicios Técnicos</h2>
+        <p class="subtitulo">
+            Mantenimiento y soporte para que tu equipo funcione como nuevo.
+        </p>
+        <div class="grid">
+            <div class="card">
+                <h3>Mantenimiento de PCs</h3>
+                <p>Limpieza interna, cambio de pasta térmica y optimización de rendimiento.</p>
+                <p><strong>Recomendado cada 6 a 12 meses.</strong></p>
+            </div>
+            <div class="card">
+                <h3>Instalación de Sistemas Operativos</h3>
+                <p>Windows 10/11, activación, instalación de drivers y programas básicos.</p>
+                <p><strong>Incluye antivirus y paquete office (si el cliente lo requiere).</strong></p>
+            </div>
+            <div class="card">
+                <h3>Reparación y Diagnóstico</h3>
+                <p>Detección de fallas de software y hardware, cambio de piezas dañadas.</p>
+                <p><strong>Presupuesto sin compromiso.</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section class="container" id="contacto">
+        <h2>Contacto</h2>
+        <p class="subtitulo">
+            Escríbenos para cotizar productos, coordinar un servicio técnico o solicitar más información.
+        </p>
+        <div class="botones-contacto">
+            <!-- Cambia el número y usuario por los tuyos -->
+            <a class="whatsapp" href="https://wa.me/59163140295" target="_blank">WhatsApp</a>
+            <a class="tiktok" href="https://www.tiktok.com/@iiivan94" target="_blank">TikTok</a>
+        </div>
+        <p class="direccion">
+            📍 Localidad de Viacha · Atención de lunes a sábado · Horarios coordinables por WhatsApp.
+        </p>
+    </section>
+
+    <footer>
+        © 2025 TecnoViacha – Proyecto: Diseño de página web en HTML para la venta y propaganda de productos en la localidad de Viacha.
+    </footer>
+
+    <!-- SCRIPT DEL CARRUSEL -->
+    <script>
+        const slides = document.querySelectorAll(".carousel-slide");
+        const dots = document.querySelectorAll(".carousel-dot");
+        const prevBtn = document.querySelector(".carousel-btn.prev");
+        const nextBtn = document.querySelector(".carousel-btn.next");
+        let currentIndex = 0;
+        let autoPlayInterval;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle("active", i === index);
+            });
+            dots.forEach((dot, i) => {
+                dot.classList.toggle("active", i === index);
+            });
+            currentIndex = index;
+        }
+
+        function nextSlide() {
+            let newIndex = currentIndex + 1;
+            if (newIndex >= slides.length) newIndex = 0;
+            showSlide(newIndex);
+        }
+
+        function prevSlide() {
+            let newIndex = currentIndex - 1;
+            if (newIndex < 0) newIndex = slides.length - 1;
+            showSlide(newIndex);
+        }
+
+        function startAutoPlay() {
+            autoPlayInterval = setInterval(nextSlide, 5000); // 5 segundos
+        }
+
+        function stopAutoPlay() {
+            clearInterval(autoPlayInterval);
+        }
+
+        nextBtn.addEventListener("click", () => {
+            stopAutoPlay();
+            nextSlide();
+            startAutoPlay();
+        });
+
+        prevBtn.addEventListener("click", () => {
+            stopAutoPlay();
+            prevSlide();
+            startAutoPlay();
+        });
+
+        dots.forEach(dot => {
+            dot.addEventListener("click", () => {
+                stopAutoPlay();
+                const index = parseInt(dot.getAttribute("data-index"), 10);
+                showSlide(index);
+                startAutoPlay();
+            });
+        });
+
+        // Iniciar
+        showSlide(0);
+        startAutoPlay();
+    </script>
+</body>
+</html>

@@ -3,144 +3,148 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TecnoViacha - Venta y Propaganda de Productos</title>
+    <title>Página web – Negocios en Viacha</title>
     <style>
         :root {
-            --color-primario: #0d6efd;
-            --color-secundario: #1e1e1e;
-            --color-acento: #ffb400;
-            --color-fondo: #f2f5f7;
-            --color-tarjeta: #ffffff;
+            --color-fondo: #020617;
+            --color-panel: #0b1120;
+            --color-tarjeta: #020617;
+            --color-primario: #22c55e;
+            --color-secundario: #2563eb;
+            --color-texto: #e5e7eb;
+            --color-texto-suave: #9ca3af;
         }
 
-        * {
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
 
         body {
             margin: 0;
             font-family: "Segoe UI", Arial, sans-serif;
-            background: var(--color-fondo);
-            color: #333;
+            background: radial-gradient(circle at top, #1e293b, #020617);
+            color: var(--color-texto);
         }
 
         /* ENCABEZADO / HERO */
         header {
-            background: radial-gradient(circle at top left, #0d6efd, #004aad);
-            color: white;
-            padding: 80px 20px 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px 40px;
+            max-width: 900px;
+            margin: 0 auto;
             text-align: center;
-            position: relative;
-            overflow: hidden;
         }
 
-        header::after {
-            content: "";
-            position: absolute;
-            width: 260px;
-            height: 260px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.08);
-            top: -60px;
-            right: -40px;
+        .hero-texto {
+            flex: 1 1 auto;
+            min-width: 0;
         }
 
-        .logo-mini {
-            font-size: 0.95rem;
-            font-weight: 600;
-            letter-spacing: 2px;
+        .hero-sub {
+            font-size: 0.85rem;
+            letter-spacing: 1.6px;
             text-transform: uppercase;
-            margin-bottom: 10px;
-            opacity: 0.85;
+            color: var(--color-texto-suave);
+            margin-bottom: 8px;
         }
 
-        header h1 {
-            font-size: 2.8rem;
-            margin: 0;
-            font-weight: 800;
+        .hero-texto h1 {
+            margin: 0 0 10px;
+            font-size: 2.4rem;
         }
 
-        header p {
-            font-size: 1.1rem;
-            margin-top: 12px;
-            margin-bottom: 25px;
+        .hero-texto p {
+            margin: 0 0 18px;
+            font-size: 0.98rem;
+            color: var(--color-texto-suave);
+            max-width: 640px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .hero-badges {
             display: flex;
             flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 18px;
             justify-content: center;
-            gap: 10px;
-            margin-bottom: 20px;
         }
 
         .hero-badge {
-            background: rgba(0, 0, 0, 0.3);
             border-radius: 999px;
-            padding: 6px 14px;
-            font-size: 0.85rem;
+            padding: 6px 12px;
+            font-size: 0.78rem;
+            border: 1px solid rgba(148, 163, 184, 0.6);
+            background: rgba(15, 23, 42, 0.8);
         }
 
         .hero-botones {
             display: flex;
-            justify-content: center;
             flex-wrap: wrap;
-            gap: 15px;
+            gap: 12px;
+            justify-content: center;
         }
 
-        .btn-primario,
-        .btn-secundario {
+        .btn {
             border-radius: 999px;
-            padding: 12px 26px;
-            text-decoration: none;
+            padding: 10px 22px;
+            font-size: 0.95rem;
             font-weight: 600;
-            font-size: 1rem;
+            text-decoration: none;
             display: inline-block;
             transition: transform 0.15s, box-shadow 0.15s, background 0.15s, color 0.15s;
         }
 
         .btn-primario {
-            background: #fff;
-            color: #004aad;
-            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+            background: var(--color-primario);
+            color: #022c22;
+            box-shadow: 0 10px 30px rgba(34, 197, 94, 0.4);
         }
 
         .btn-primario:hover {
             transform: translateY(-2px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35);
+            box-shadow: 0 14px 40px rgba(34, 197, 94, 0.6);
         }
 
         .btn-secundario {
-            border: 2px solid #fff;
-            color: #fff;
-            background: transparent;
+            border: 1px solid rgba(148, 163, 184, 0.7);
+            color: var(--color-texto);
+            background: rgba(15, 23, 42, 0.85);
         }
 
         .btn-secundario:hover {
-            background: rgba(255, 255, 255, 0.1);
             transform: translateY(-2px);
+            background: rgba(15, 23, 42, 1);
         }
 
         /* NAV */
         nav {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            background: var(--color-secundario);
-            padding: 12px 10px;
             position: sticky;
             top: 0;
             z-index: 50;
+            background: rgba(15, 23, 42, 0.96);
+            backdrop-filter: blur(8px);
+            border-top: 1px solid rgba(15, 23, 42, 1);
+            border-bottom: 1px solid rgba(55, 65, 81, 0.7);
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 8px 16px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            align-items: center;
+            justify-content: center;
         }
 
         nav a {
-            color: white;
+            color: var(--color-texto);
             text-decoration: none;
-            font-size: 1rem;
+            font-size: 0.9rem;
             font-weight: 500;
             position: relative;
             padding-bottom: 3px;
@@ -162,113 +166,96 @@
         }
 
         /* CONTENEDOR GENERAL */
-        .container {
+        .section {
             max-width: 1200px;
-            margin: auto;
+            margin: 0 auto;
             padding: 40px 20px;
         }
 
         h2 {
             text-align: center;
-            font-size: 2rem;
-            margin-bottom: 12px;
-            color: var(--color-secundario);
+            font-size: 1.9rem;
+            margin-bottom: 10px;
         }
 
         .subtitulo {
             text-align: center;
-            margin-bottom: 30px;
-            font-size: 0.98rem;
-            color: #666;
+            margin-bottom: 26px;
+            font-size: 0.94rem;
+            color: var(--color-texto-suave);
+        }
+
+        .panel {
+            background: var(--color-panel);
+            border-radius: 20px;
+            padding: 22px 20px 26px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.75);
+            border: 1px solid rgba(75, 85, 99, 0.8);
         }
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 22px;
         }
 
         .card {
             background: var(--color-tarjeta);
-            border-radius: 14px;
-            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
-            padding: 18px 18px 20px;
+            border-radius: 16px;
+            padding: 16px 16px 18px;
             text-align: center;
-            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid rgba(55, 65, 81, 0.9);
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.8);
+            transition: transform 0.18s, box-shadow 0.18s, border 0.18s;
             position: relative;
             overflow: hidden;
         }
 
-        .card::before {
-            content: "";
-            position: absolute;
-            width: 140%;
-            height: 60px;
-            background: linear-gradient(90deg, rgba(13, 110, 253, 0.13), transparent);
-            top: -60px;
-            left: -20%;
-            transform: rotate(-3deg);
-        }
-
         .card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 10px 18px rgba(0, 0, 0, 0.2);
+            transform: translateY(-6px) scale(1.01);
+            border-color: var(--color-primario);
+            box-shadow: 0 24px 70px rgba(0, 0, 0, 0.95);
         }
 
         .card img {
             width: 100%;
-            border-radius: 10px;
+            border-radius: 12px;
             margin-bottom: 12px;
+            display: block;
         }
 
         .card h3 {
-            margin-top: 5px;
-            margin-bottom: 8px;
+            margin-top: 4px;
+            margin-bottom: 6px;
+            font-size: 1.1rem;
         }
 
-        .badge-oferta {
+        .card p {
+            margin: 2px 0;
+            font-size: 0.9rem;
+            color: var(--color-texto-suave);
+        }
+
+        .badge {
             position: absolute;
             top: 10px;
-            right: 12px;
-            background: var(--color-acento);
-            color: #000;
-            font-weight: 700;
-            font-size: 0.78rem;
+            left: 10px;
             padding: 4px 10px;
             border-radius: 999px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #f97316, #facc15);
+            color: #111827;
+            box-shadow: 0 10px 28px rgba(248, 181, 0, 0.9);
         }
 
         /* CARRUSEL */
-        .carousel-section {
-            background: #0b1736;
-            color: #fff;
-            padding: 40px 0 45px;
-        }
-
-        .carousel-wrapper {
-            max-width: 1100px;
-            margin: auto;
-            padding: 0 20px;
-        }
-
-        .carousel-title {
-            text-align: center;
-            font-size: 1.6rem;
-            margin-bottom: 8px;
-        }
-
-        .carousel-sub {
-            text-align: center;
-            font-size: 0.95rem;
-            margin-bottom: 20px;
-            color: #d7defa;
-        }
-
-        .carousel {
+        .carousel-container {
             position: relative;
             overflow: hidden;
-            border-radius: 18px;
-            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.6);
+            border-radius: 20px;
+            box-shadow: 0 30px 90px rgba(0, 0, 0, 0.95);
+            border: 1px solid rgba(75, 85, 99, 0.8);
         }
 
         .carousel-slide {
@@ -278,14 +265,14 @@
 
         .carousel-slide img {
             width: 100%;
-            display: block;
             max-height: 420px;
             object-fit: cover;
+            display: block;
         }
 
         .carousel-slide.active {
             display: block;
-            animation: fadeIn 0.5s ease-in-out;
+            animation: fadeIn 0.45s ease-out;
         }
 
         .carousel-caption {
@@ -294,255 +281,237 @@
             bottom: 0;
             width: 100%;
             padding: 16px 22px 20px;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
-            color: #fff;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
         }
 
         .carousel-caption h3 {
             margin: 0 0 4px;
+            font-size: 1.2rem;
         }
 
         .carousel-caption p {
             margin: 0;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
+            color: #e5e7eb;
         }
 
         .carousel-btn {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            width: 38px;
-            height: 38px;
+            width: 34px;
+            height: 34px;
             border-radius: 50%;
-            background: rgba(0, 0, 0, 0.55);
-            border: none;
-            color: #fff;
-            font-size: 1.4rem;
-            cursor: pointer;
+            border: 1px solid rgba(148, 163, 184, 0.8);
+            background: rgba(15, 23, 42, 0.9);
+            color: var(--color-texto);
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: background 0.15s, transform 0.15s;
+            cursor: pointer;
+            font-size: 1.3rem;
+            transition: transform 0.15s, background 0.15s;
         }
 
         .carousel-btn:hover {
-            background: rgba(0, 0, 0, 0.85);
-            transform: translateY(-50%) scale(1.05);
+            transform: translateY(-50%) scale(1.08);
+            background: rgba(15, 23, 42, 1);
         }
 
-        .carousel-btn.prev {
-            left: 12px;
-        }
-
-        .carousel-btn.next {
-            right: 12px;
-        }
+        .carousel-btn.prev { left: 10px; }
+        .carousel-btn.next { right: 10px; }
 
         .carousel-dots {
             position: absolute;
-            bottom: 10px;
             left: 0;
             right: 0;
+            bottom: 10px;
             display: flex;
             justify-content: center;
-            gap: 8px;
+            gap: 6px;
         }
 
         .carousel-dot {
             width: 9px;
             height: 9px;
             border-radius: 50%;
-            border: 1px solid #fff;
+            border: 1px solid #e5e7eb;
             background: transparent;
             cursor: pointer;
-            transition: background 0.15s, transform 0.15s;
+            transition: background 0.15s, transform 0.15s, border-color 0.15s;
         }
 
         .carousel-dot.active {
-            background: #fff;
+            background: var(--color-primario);
+            border-color: var(--color-primario);
             transform: scale(1.15);
         }
 
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: scale(1.01);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
+            from { opacity: 0; transform: scale(1.01); }
+            to   { opacity: 1; transform: scale(1); }
         }
 
-        /* SECCIÓN PROPAGANDA / PROMOS */
+        /* TIRA DE PROPAGANDA */
         .promo-strip {
-            background: #fff;
-            border-radius: 16px;
-            padding: 16px 18px;
+            margin-top: 24px;
+            padding: 12px 16px;
+            border-radius: 999px;
+            background: linear-gradient(90deg, #0f172a, #111827);
+            border: 1px solid rgba(75, 85, 99, 0.8);
+            font-size: 0.88rem;
+            color: var(--color-texto-suave);
             display: flex;
             flex-wrap: wrap;
-            align-items: center;
+            gap: 10px;
             justify-content: center;
-            gap: 12px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            align-items: center;
         }
 
-        .promo-strip span {
+        .promo-highlight {
+            color: var(--color-primario);
             font-weight: 600;
         }
 
-        .pill {
-            padding: 6px 14px;
-            border-radius: 999px;
-            background: #e6f0ff;
-            font-size: 0.9rem;
-        }
-
         /* CONTACTO */
-        .botones-contacto {
+        .contacto-botones {
             text-align: center;
             margin-top: 20px;
         }
 
-        .botones-contacto a {
+        .contacto-botones a {
             display: inline-block;
-            margin: 10px 15px;
-            padding: 12px 25px;
-            border-radius: 30px;
+            margin: 8px 12px;
+            padding: 10px 22px;
+            border-radius: 999px;
+            font-weight: 600;
+            font-size: 0.98rem;
             text-decoration: none;
-            font-weight: bold;
-            font-size: 1.05rem;
         }
 
-        .whatsapp {
-            background: #25D366;
-            color: white;
+        .btn-wa {
+            background: #22c55e;
+            color: #022c22;
         }
 
-        .tiktok {
-            background: #000;
-            color: white;
+        .btn-tk {
+            background: #000000;
+            color: #f9fafb;
         }
 
         .direccion {
             text-align: center;
-            font-size: 0.95rem;
-            color: #555;
-            margin-top: 15px;
+            margin-top: 14px;
+            font-size: 0.9rem;
+            color: var(--color-texto-suave);
         }
 
-        /* FOOTER */
         footer {
-            background: var(--color-secundario);
-            color: white;
-            text-align: center;
-            padding: 18px 10px;
             margin-top: 40px;
-            font-size: 0.95rem;
+            padding: 16px 10px;
+            text-align: center;
+            font-size: 0.87rem;
+            color: var(--color-texto-suave);
+            border-top: 1px solid rgba(55, 65, 81, 0.8);
+            background: #020617;
         }
 
         /* RESPONSIVE */
-        @media (max-width: 700px) {
-            header {
-                padding: 60px 16px 40px;
-            }
-            header h1 {
-                font-size: 2.1rem;
-            }
-            nav {
-                flex-wrap: wrap;
-            }
-            .carousel-caption {
-                font-size: 0.9rem;
-            }
+        @media (max-width: 768px) {
+            header { padding-top: 30px; }
+            .hero-texto h1 { font-size: 2rem; }
         }
 
-        /* Estilo impresión */
+        /* IMPRESIÓN */
         @media print {
             nav,
-            footer,
-            .botones-contacto,
-            .hero-botones,
-            .carousel-section,
-            .promo-strip {
+            .contacto-botones {
                 display: none !important;
             }
-            header {
-                background: #000 !important;
-                color: white;
+            body {
+                background: #ffffff;
+                color: #000000;
             }
+            .panel,
             .card {
-                break-inside: avoid;
+                box-shadow: none !important;
+                border-color: #000 !important;
             }
         }
     </style>
 </head>
 <body>
-    <!-- HERO PRINCIPAL -->
+    <!-- HERO -->
     <header id="inicio">
-        <div class="logo-mini">TECNO VIACHA · SISTEMAS INFORMÁTICOS</div>
-        <h1>Página Web para Venta y Propaganda</h1>
-        <p>Promocionamos accesorios de PC, servicios técnicos y ofertas tecnológicas en la localidad de Viacha.</p>
-
-        <div class="hero-badges">
-            <div class="hero-badge">✓ Catálogo de productos</div>
-            <div class="hero-badge">✓ Servicios técnicos especializados</div>
-            <div class="hero-badge">✓ Contacto directo por WhatsApp</div>
-        </div>
-
-        <div class="hero-botones">
-            <a href="#productos" class="btn-primario">Ver productos</a>
-            <a href="#contacto" class="btn-secundario">Pedir información</a>
+        <div class="hero-texto">
+            <div class="hero-sub">CEA “ABYA YALA” · SISTEMAS INFORMÁTICOS</div>
+            <h1>Página web adaptable a cualquier tipo de negocio</h1>
+            <p>
+                Ejemplo de sitio web desarrollado en HTML, CSS y JavaScript que puede personalizarse
+                para la venta y propaganda de productos o servicios de distintos rubros
+                (tecnología, comida, ropa, ferretería, etc.) en la localidad de Viacha u otras ciudades.
+            </p>
+            <div class="hero-badges">
+                <div class="hero-badge">Catálogo digital de productos</div>
+                <div class="hero-badge">Sección de servicios</div>
+                <div class="hero-badge">Publicidad con imágenes y carrusel</div>
+            </div>
+            <div class="hero-botones">
+                <a href="#productos" class="btn btn-primario">Ver catálogo de ejemplo</a>
+                <a href="#contacto" class="btn btn-secundario">Ver contacto</a>
+            </div>
         </div>
     </header>
 
     <!-- NAV -->
     <nav>
-        <a href="#inicio">Inicio</a>
-        <a href="#carousel">Publicidad</a>
-        <a href="#productos">Productos</a>
-        <a href="#servicios">Servicios</a>
-        <a href="#contacto">Contacto</a>
+        <div class="nav-inner">
+            <a href="#inicio">Inicio</a>
+            <a href="#publicidad">Publicidad</a>
+            <a href="#productos">Productos</a>
+            <a href="#servicios">Servicios</a>
+            <a href="#contacto">Contacto</a>
+        </div>
     </nav>
 
-    <!-- CARRUSEL / PROPAGANDA -->
-    <section class="carousel-section" id="carousel">
-        <div class="carousel-wrapper">
-            <h2 class="carousel-title">Promociones destacadas</h2>
-            <p class="carousel-sub">
-                Anunciamos nuestros productos estrella y servicios más solicitados para los clientes de Viacha.
-            </p>
+    <!-- PUBLICIDAD / CARRUSEL -->
+    <section class="section" id="publicidad">
+        <h2>Publicidad y promociones</h2>
+        <p class="subtitulo">
+            Carrusel de imágenes para difundir ofertas y servicios del negocio como parte de la propaganda digital.
+        </p>
 
-            <div class="carousel">
+        <div class="panel">
+            <div class="carousel-container">
+                <!-- Diapositiva 1 -->
                 <div class="carousel-slide active">
-                    <!-- Imagen 1: setup gamer morado/azul -->
-                    <img src="https://images.unsplash.com/photo-1593642532973-d31b6557fa68?w=1400" alt="PC Gamer en promoción" />
+                    <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=1600"
+                         alt="Promoción discos sólidos SSD" />
                     <div class="carousel-caption">
-                        <h3>Actualización a Disco Sólido SSD</h3>
-                        <p>Haz tu computadora mucho más rápida. Instalación y copia de datos incluidos.</p>
+                        <h3>Promoción de productos destacados</h3>
+                        <p>Muestra productos clave del negocio, como discos SSD u otros artículos en oferta.</p>
                     </div>
                 </div>
-
+                <!-- Diapositiva 2 -->
                 <div class="carousel-slide">
-                    <!-- Imagen 2: teclado y luces RGB -->
-                    <img src="https://images.unsplash.com/photo-1512428559087-560fa5ceab42?w=1400" alt="Accesorios de PC RGB" />
+                    <img src="https://images.unsplash.com/photo-1545239351-1141bd82e8a6?w=1600"
+                         alt="Setup gamer con luces" />
                     <div class="carousel-caption">
-                        <h3>Accesorios tecnológicos con estilo</h3>
-                        <p>Teclados, mouse y combos gamer con iluminación RGB para tu escritorio.</p>
+                        <h3>Ofertas especiales</h3>
+                        <p>Combos, paquetes o descuentos que el negocio desea resaltar al público.</p>
                     </div>
                 </div>
-
+                <!-- Diapositiva 3 -->
                 <div class="carousel-slide">
-                    <!-- Imagen 3: técnico reparando PC -->
-                    <img src="https://images.unsplash.com/photo-1587202372634-32705e3bf49c?w=1400" alt="Servicio técnico" />
+                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1600"
+                         alt="Servicio técnico de computadoras" />
                     <div class="carousel-caption">
-                        <h3>Servicio técnico en Viacha</h3>
-                        <p>Mantenimiento preventivo y correctivo sin tener que ir a la ciudad de La Paz.</p>
+                        <h3>Servicios del negocio</h3>
+                        <p>Ejemplo de mantenimiento, soporte o cualquier servicio que se quiera promocionar.</p>
                     </div>
                 </div>
 
-                <!-- Botones -->
+                <!-- Botones carrusel -->
                 <button class="carousel-btn prev" aria-label="Anterior">&#10094;</button>
                 <button class="carousel-btn next" aria-label="Siguiente">&#10095;</button>
 
@@ -553,95 +522,139 @@
                     <div class="carousel-dot" data-index="2"></div>
                 </div>
             </div>
+
+            <div class="promo-strip">
+                <span>🎯 <span class="promo-highlight">Objetivo general:</span> usar la página como vitrina digital</span>
+                <span>| Adaptable a diferentes negocios y rubros en Viacha u otras localidades.</span>
+            </div>
         </div>
     </section>
 
-    <!-- BLOQUE DE PROPAGANDA SIMPLE -->
-    <section class="container">
-        <div class="promo-strip">
-            <span>🎯 Propaganda digital para Viacha:</span>
-            <span class="pill">Publicidad de productos en la web</span>
-            <span class="pill">Anuncios de ofertas y combos</span>
-            <span class="pill">Contacto directo con clientes</span>
-        </div>
-    </section>
-
-    <!-- PRODUCTOS -->
-    <section class="container" id="productos">
-        <h2>Catálogo de Productos</h2>
+    <!-- CATÁLOGO DE PRODUCTOS -->
+    <section class="section" id="productos">
+        <h2>Catálogo digital de productos</h2>
         <p class="subtitulo">
-            Venta de accesorios y componentes para mejorar el rendimiento de tu PC o laptop.
+            Ejemplo de cómo un negocio puede mostrar sus productos en formato de catálogo digital.
         </p>
-        <div class="grid">
-            <div class="card">
-                <div class="badge-oferta">OFERTA</div>
-                <!-- Imagen SSD muy llamativa -->
-                <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800" alt="Disco Sólido SSD" />
-                <h3>Discos Sólidos SSD</h3>
-                <p>120GB / 240GB / 480GB / 1TB</p>
-                <p><strong>Ideal para acelerar tu equipo.</strong></p>
-            </div>
-            <div class="card">
-                <div class="badge-oferta">NUEVO</div>
-                <!-- Imagen RAM con luces -->
-                <img src="https://images.unsplash.com/photo-1593642532400-2682810df593?w=800" alt="Memorias RAM" />
-                <h3>Memorias RAM</h3>
-                <p>DDR3 / DDR4 / DDR5</p>
-                <p><strong>Mejora el rendimiento en juegos y programas.</strong></p>
-            </div>
-            <div class="card">
-                <!-- Imagen escritorio setup gamer -->
-                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800" alt="Accesorios" />
-                <h3>Accesorios Varios</h3>
-                <p>Teclados, mouse, parlantes, cables HDMI, hubs USB.</p>
-                <p><strong>Todo para tu escritorio tecnológico.</strong></p>
+
+        <div class="panel">
+            <div class="grid">
+                <div class="card">
+                    <div class="badge">OFERTA</div>
+                    <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=1200"
+                         alt="Discos sólidos SSD" />
+                    <h3>Productos destacados</h3>
+                    <p>Artículos con mayor demanda o en promoción dentro del negocio.</p>
+                    <p><strong>Útil para llamar la atención del cliente.</strong></p>
+                </div>
+
+                <div class="card">
+                    <div class="badge">NUEVO</div>
+                    <img src="https://images.unsplash.com/photo-1515940175183-6798529cb860?w=1200"
+                         alt="Memorias RAM" />
+                    <h3>Productos nuevos</h3>
+                    <p>Línea de productos recién incorporados al negocio.</p>
+                    <p><strong>Sirve para presentar novedades al público.</strong></p>
+                </div>
+
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1511385348-a52b4a160dc2?w=1200"
+                         alt="Accesorios de computadora" />
+                    <h3>Accesorios y complementos</h3>
+                    <p>Ejemplo: teclados, mouse, audífonos, cables u otros accesorios según el rubro.</p>
+                    <p><strong>Se puede adaptar a accesorios de cualquier tipo de negocio.</strong></p>
+                </div>
+
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1599669454699-248893623440?w=1200"
+                         alt="Auriculares gamer" />
+                    <h3>Productos para uso diario</h3>
+                    <p>Artículos que el cliente utiliza con frecuencia (para trabajo, estudio o entretenimiento).</p>
+                    <p><strong>Ayuda a mostrar el valor práctico del producto.</strong></p>
+                </div>
+
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1593642532973-d31b6557fa68?w=1200"
+                         alt="Laptop actualizada" />
+                    <h3>Servicios adicionales</h3>
+                    <p>Ejemplo: instalación, entrega a domicilio, personalización, etc.</p>
+                    <p><strong>El catálogo también puede incluir servicios, no solo productos.</strong></p>
+                </div>
+
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1587202372634-32705e3bf49c?w=1200"
+                         alt="Equipos de red" />
+                    <h3>Paquetes o combos</h3>
+                    <p>Conjunto de productos o servicios ofrecidos a precio especial.</p>
+                    <p><strong>Recurso útil para aumentar las ventas del negocio.</strong></p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- SERVICIOS -->
-    <section class="container" id="servicios">
-        <h2>Servicios Técnicos</h2>
+    <!-- SERVICIOS TÉCNICOS -->
+    <section class="section" id="servicios">
+        <h2>Sección de servicios</h2>
         <p class="subtitulo">
-            Mantenimiento y soporte para que tu equipo funcione como nuevo.
+            Ejemplo de cómo un negocio puede describir sus servicios principales dentro de la página web.
         </p>
-        <div class="grid">
-            <div class="card">
-                <h3>Mantenimiento de PCs</h3>
-                <p>Limpieza interna, cambio de pasta térmica y optimización de rendimiento.</p>
-                <p><strong>Recomendado cada 6 a 12 meses.</strong></p>
-            </div>
-            <div class="card">
-                <h3>Instalación de Sistemas Operativos</h3>
-                <p>Windows 10/11, activación, instalación de drivers y programas básicos.</p>
-                <p><strong>Incluye antivirus y paquete office (si el cliente lo requiere).</strong></p>
-            </div>
-            <div class="card">
-                <h3>Reparación y Diagnóstico</h3>
-                <p>Detección de fallas de software y hardware, cambio de piezas dañadas.</p>
-                <p><strong>Presupuesto sin compromiso.</strong></p>
+
+        <div class="panel">
+            <div class="grid">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1580894908361-967195033215?w=1200"
+                         alt="Técnico realizando mantenimiento de PC" />
+                    <h3>Servicio 1</h3>
+                    <p>Descripción de un servicio principal (por ejemplo, mantenimiento, reparación, atención al cliente).</p>
+                    <p><strong>Se adapta al tipo de negocio que el emprendedor maneja.</strong></p>
+                </div>
+
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1545239351-1141bd82e8a6?w=1200"
+                         alt="Instalación de sistemas operativos" />
+                    <h3>Servicio 2</h3>
+                    <p>Otro servicio importante (por ejemplo, instalación, armado de pedidos, asesoría).</p>
+                    <p><strong>Permite mostrar lo que el negocio ofrece además de vender productos.</strong></p>
+                </div>
+
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200"
+                         alt="Reparación y diagnóstico" />
+                    <h3>Servicio 3</h3>
+                    <p>Servicio orientado a solucionar problemas o brindar apoyo al cliente.</p>
+                    <p><strong>Ejemplo: diagnóstico, soporte técnico o atención post-venta.</strong></p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- CONTACTO -->
-    <section class="container" id="contacto">
+    <section class="section" id="contacto">
         <h2>Contacto</h2>
         <p class="subtitulo">
-            Escríbenos para cotizar productos, coordinar un servicio técnico o solicitar más información.
+            Ejemplo de cómo la página web se vincula con canales de comunicación como WhatsApp y TikTok.
         </p>
-        <div class="botones-contacto">
-            <!-- Cambia el número y usuario por los tuyos -->
-            <a class="whatsapp" href="https://wa.me/59163140295" target="_blank">WhatsApp</a>
-            <a class="tiktok" href="https://www.tiktok.com/@iiivan94" target="_blank">TikTok</a>
+
+        <div class="panel">
+            <div class="contacto-botones">
+                <a class="btn-wa"
+                   href="https://wa.me/59163140295?text=Hola,%20vi%20su%20pagina%20web%20y%20quiero%20mas%20informacion%20sobre%20sus%20productos%20y%20servicios."
+                   target="_blank">
+                    Escribir por WhatsApp
+                </a>
+                <a class="btn-tk" href="https://www.tiktok.com/@iiivan94" target="_blank">
+                    Ver contenido en TikTok
+                </a>
+            </div>
+            <p class="direccion">
+                📍 Localidad de Viacha – Proyecto demostrativo de página web adaptable a diferentes negocios.<br />
+                Desarrollado como parte de la formación en Sistemas Informáticos – Nivel Técnico Básico del CEA “Abya Yala”.
+            </p>
         </div>
-        <p class="direccion">
-            📍 Localidad de Viacha · Atención de lunes a sábado · Horarios coordinables por WhatsApp.
-        </p>
     </section>
 
     <footer>
-        © 2025 TecnoViacha – Proyecto: Diseño de página web en HTML para la venta y propaganda de productos en la localidad de Viacha.
+        © 2025 · Página web para la venta y propaganda de productos y servicios · CEA “Abya Yala” – Sistemas Informáticos.
     </footer>
 
     <!-- SCRIPT DEL CARRUSEL -->
@@ -651,9 +664,9 @@
         const prevBtn = document.querySelector(".carousel-btn.prev");
         const nextBtn = document.querySelector(".carousel-btn.next");
         let currentIndex = 0;
-        let autoPlayInterval;
+        let autoPlay;
 
-        function showSlide(index) {
+        function mostrarSlide(index) {
             slides.forEach((slide, i) => {
                 slide.classList.toggle("active", i === index);
             });
@@ -663,50 +676,50 @@
             currentIndex = index;
         }
 
-        function nextSlide() {
-            let newIndex = currentIndex + 1;
-            if (newIndex >= slides.length) newIndex = 0;
-            showSlide(newIndex);
+        function siguienteSlide() {
+            let nuevo = currentIndex + 1;
+            if (nuevo >= slides.length) nuevo = 0;
+            mostrarSlide(nuevo);
         }
 
-        function prevSlide() {
-            let newIndex = currentIndex - 1;
-            if (newIndex < 0) newIndex = slides.length - 1;
-            showSlide(newIndex);
+        function anteriorSlide() {
+            let nuevo = currentIndex - 1;
+            if (nuevo < 0) nuevo = slides.length - 1;
+            mostrarSlide(nuevo);
         }
 
-        function startAutoPlay() {
-            autoPlayInterval = setInterval(nextSlide, 5000); // 5 segundos
+        function iniciarAutoPlay() {
+            autoPlay = setInterval(siguienteSlide, 5000);
         }
 
-        function stopAutoPlay() {
-            clearInterval(autoPlayInterval);
+        function detenerAutoPlay() {
+            clearInterval(autoPlay);
         }
 
         nextBtn.addEventListener("click", () => {
-            stopAutoPlay();
-            nextSlide();
-            startAutoPlay();
+            detenerAutoPlay();
+            siguienteSlide();
+            iniciarAutoPlay();
         });
 
         prevBtn.addEventListener("click", () => {
-            stopAutoPlay();
-            prevSlide();
-            startAutoPlay();
+            detenerAutoPlay();
+            anteriorSlide();
+            iniciarAutoPlay();
         });
 
         dots.forEach(dot => {
             dot.addEventListener("click", () => {
-                stopAutoPlay();
-                const index = parseInt(dot.getAttribute("data-index"), 10);
-                showSlide(index);
-                startAutoPlay();
+                detenerAutoPlay();
+                const indice = parseInt(dot.getAttribute("data-index"), 10);
+                mostrarSlide(indice);
+                iniciarAutoPlay();
             });
         });
 
-        // Iniciar
-        showSlide(0);
-        startAutoPlay();
+        // Iniciar carrusel
+        mostrarSlide(0);
+        iniciarAutoPlay();
     </script>
 </body>
 </html>
